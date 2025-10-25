@@ -166,6 +166,30 @@ export const routes: Routes = [
           name: 'Gifts',
           showInSidebar: true
         }
+      },
+      {
+        path: 'products',
+        component: ProductsComponent,
+        data: {
+          authorities: [
+            IRoleType.superAdmin,
+            IRoleType.user,
+          ],
+          name: 'Products',
+          showInSidebar: true
+        }
+      },
+      {
+        path: 'product-list',
+        component: ProductComponent,
+        data: {
+          authorities: [
+            IRoleType.superAdmin,
+            IRoleType.user,
+          ],
+          name: 'Product Lists',
+          showInSidebar: true
+        }
       }
     ],
   },

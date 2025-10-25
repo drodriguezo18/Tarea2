@@ -121,3 +121,35 @@ export interface IGift {
   updatedAt?: string;
   giftList?: IGiftList;
 }
+
+export interface IProduct {
+  id?: number;
+  name?: string;
+  description?: string;
+  price?: number;
+  stock?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  productList?: IProductList;
+}
+
+export interface IProductList {
+  id?: number;
+  name?: string;
+  description?: string;
+}
+
+export interface ICategory {
+  id?: number;
+  name?: string;
+  description?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  categoryList?: ICategoryList;
+}
+
+export interface ICategoryList {
+  id?: number;
+  name?: string;
+  description?: string;
+}
