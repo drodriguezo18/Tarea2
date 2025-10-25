@@ -37,7 +37,7 @@ export class ProductListProductsComponent implements OnInit {
     name: ['', Validators.required],
     description: [''],
     price: [0],
-    stock: ['']
+    stock: [0]
   });
 
   constructor() {
@@ -62,7 +62,7 @@ export class ProductListProductsComponent implements OnInit {
   }
 
   loadProducts() {
-    this.productService.getGiftsByGiftListId(this.productListId);
+    this.productService.getProductsByProductListId(this.productListId);
   }
 
   save(product: IProduct) {
@@ -70,7 +70,7 @@ export class ProductListProductsComponent implements OnInit {
       product.productList = { id: this.productListId };
       this.productService.update(product);
     } else {
-      this.productService.addProducttoProductList(this.productListId, product);
+      this.productService.addProductToProductList(this.productListId, product);
     }
     this.form.reset();
     this.isEdit = false;
@@ -83,7 +83,7 @@ export class ProductListProductsComponent implements OnInit {
       name: product.name || '',
       description: product.description || '',
       price: product.price || 0,
-      stock: product.stock || ''
+      stock: product.stock || 0
     });
   }
 

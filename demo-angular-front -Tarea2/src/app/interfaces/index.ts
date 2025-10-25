@@ -127,7 +127,7 @@ export interface IProduct {
   name?: string;
   description?: string;
   price?: number;
-  stock?: string;
+  stock?: number;
   createdAt?: string;
   updatedAt?: string;
   productList?: IProductList;

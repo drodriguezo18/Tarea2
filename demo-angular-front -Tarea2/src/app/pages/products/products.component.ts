@@ -2,7 +2,7 @@ import { Component, effect, inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProductService } from '../../services/product.service';
-import { ProductListService } from '../../servicesproduct-list.service';
+import { ProductListService } from '../../services/product-list.service';
 import { IProduct } from '../../interfaces';
 import { ProductFormComponent } from '../../components/product/product-form/product-form.component';
 import { ProductsTableComponent } from '../../components/product/products-table/products-table.component';
@@ -80,7 +80,7 @@ export class ProductsComponent implements OnInit {
       name: product.name || '',
       description: product.description || '',
       price: product.price || 0,
-      stock: product.stock || '',
+      stock: product.stock || 0,
       productListId: product.productList?.id?.toString() || ''
     });
   }
