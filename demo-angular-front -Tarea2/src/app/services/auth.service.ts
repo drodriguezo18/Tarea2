@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
+
 export class AuthService {
   private accessToken!: string;
   private expiresIn! : number;

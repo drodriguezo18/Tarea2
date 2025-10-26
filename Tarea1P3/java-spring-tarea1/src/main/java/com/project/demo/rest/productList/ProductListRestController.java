@@ -75,7 +75,7 @@ public class ProductListRestController {
     }
 
     @PostMapping("/{productListId}/products")
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
     public ResponseEntity<?> addGiftToGiftList(@PathVariable Long productListId, @RequestBody Product gift, HttpServletRequest request) {
         Optional<ProductList> foundGiftList = productListRepository.findById(productListId);
         if(foundGiftList.isPresent()) {
@@ -91,7 +91,7 @@ public class ProductListRestController {
     }
 
     @GetMapping("/{productListId}/products")
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
     public ResponseEntity<?> getProductsFromProductsList(
             @PathVariable Long productListId,
             @RequestParam(defaultValue = "1") int page,
@@ -118,7 +118,7 @@ public class ProductListRestController {
     }
 
     @DeleteMapping("/{productListId}/products/{productId}")
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
     public ResponseEntity<?> removeProductfromProductList(@PathVariable Long productListId, @PathVariable Long productId, HttpServletRequest request) {
         Optional<ProductList> foundGiftList = productListRepository.findById(productListId);
         Optional<Product> foundGift = productRepository.findById(productId);

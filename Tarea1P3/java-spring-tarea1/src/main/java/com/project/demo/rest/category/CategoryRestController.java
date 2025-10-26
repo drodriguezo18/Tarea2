@@ -51,7 +51,7 @@ public class CategoryRestController {
 
     @GetMapping("/category-list/{categoryListId}")
     @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<?> getCategorybyCategortListId(
+    public ResponseEntity<?> getCategorybyCategorytListId(
             @PathVariable Long categoryListId,
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10") int size,

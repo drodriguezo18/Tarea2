@@ -84,7 +84,7 @@ public class ProductRestController {
     }
 
     @PostMapping
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
     public ResponseEntity<?> addProduct(@RequestBody Product gift, HttpServletRequest request) {
         if (gift.getProductList() != null && gift.getProductList().getId() != null) {
             Optional<ProductList> giftList = productListRepository.findById(gift.getProductList().getId());
