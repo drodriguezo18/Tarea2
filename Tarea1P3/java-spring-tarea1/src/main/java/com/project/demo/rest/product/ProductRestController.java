@@ -75,10 +75,10 @@ public class ProductRestController {
     public ResponseEntity<?> getProductById(@PathVariable Long id, HttpServletRequest request) {
         Optional<Product> foundGift = productRepository.findById(id);
         if(foundGift.isPresent()) {
-            return new GlobalResponseHandler().handleResponse("Gift retrieved successfully",
+            return new GlobalResponseHandler().handleResponse("Product retrieved successfully",
                     foundGift.get(), HttpStatus.OK, request);
         } else {
-            return new GlobalResponseHandler().handleResponse("Gift " + id + " not found",
+            return new GlobalResponseHandler().handleResponse("Product " + id + " not found",
                     HttpStatus.NOT_FOUND, request);
         }
     }
@@ -134,7 +134,7 @@ public class ProductRestController {
     }
 
 
-    @DeleteMapping("/{Id}")
+    @DeleteMapping("/{id}")
     @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
     public ResponseEntity<?> deleteProduct(@PathVariable Long id, HttpServletRequest request) {
         Optional<Product> foundGift = productRepository.findById(id);

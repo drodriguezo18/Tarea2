@@ -39,8 +39,8 @@ export class ProductsComponent implements OnInit {
     name: ['', Validators.required],
     description: [''],
     price: [0],
-    imageUrl: [''],
-    giftListId: ['', Validators.required]
+    stock: [0],
+    productListId: ['', Validators.required]
   });
 
   constructor() {
@@ -80,8 +80,9 @@ export class ProductsComponent implements OnInit {
       name: product.name || '',
       description: product.description || '',
       price: product.price || 0,
-      stock: product.stock || 0,
-      productListId: product.productList?.id?.toString() || ''
+        stock: product.stock || 0,
+    productListId: product.productList?.id?.toString() || ''
+      
     });
   }
 

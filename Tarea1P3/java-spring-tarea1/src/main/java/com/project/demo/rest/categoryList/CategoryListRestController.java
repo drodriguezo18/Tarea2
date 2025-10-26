@@ -109,32 +109,32 @@ public class CategoryListRestController {
             meta.setPageNumber(giftsPage.getNumber() + 1);
             meta.setPageSize(giftsPage.getSize());
 
-            return new GlobalResponseHandler().handleResponse("Gifts from Gift List retrieved successfully",
+            return new GlobalResponseHandler().handleResponse("Categories from Category List retrieved successfully",
                     giftsPage.getContent(), HttpStatus.OK, meta);
         } else {
-            return new GlobalResponseHandler().handleResponse("Gift List " + categoryListId + " not found",
+            return new GlobalResponseHandler().handleResponse("Category List " + categoryListId + " not found",
                     HttpStatus.NOT_FOUND, request);
         }
     }
 
     @DeleteMapping("/{categoryListId}/categories/{categoryId}")
     @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<?> removeCategoriesfromCategoriesList(@PathVariable Long categoryListId, @PathVariable Long giftId, HttpServletRequest request) {
+    public ResponseEntity<?> removeCategoriesfromCategoriesList(@PathVariable Long categoryListId, @PathVariable Long categoryId, HttpServletRequest request) {
         Optional<CategoryList> foundGiftList = categoryListRepository.findById(categoryListId);
-        Optional<Category> foundGift = categoryRepository.findById(giftId);
+        Optional<Category> foundGift = categoryRepository.findById(categoryId);
 
         if(foundGiftList.isPresent() && foundGift.isPresent()) {
             Category gift = foundGift.get();
             if(gift.getCategoryList().getId().equals(categoryListId)) {
-                categoryRepository.deleteById(giftId);
-                return new GlobalResponseHandler().handleResponse("Gift removed from Gift List successfully",
+                categoryRepository.deleteById(categoryId);
+                return new GlobalResponseHandler().handleResponse("Category removed from Category List successfully",
                         gift, HttpStatus.OK, request);
             } else {
-                return new GlobalResponseHandler().handleResponse("Gift " + giftId + " does not belong to Gift List " + categoryListId,
+                return new GlobalResponseHandler().handleResponse("Category " + categoryId + " does not belong to Category List " + categoryListId,
                         HttpStatus.BAD_REQUEST, request);
             }
         } else {
-            return new GlobalResponseHandler().handleResponse("Gift List or Gift not found",
+            return new GlobalResponseHandler().handleResponse("Category List or Category not found",
                     HttpStatus.NOT_FOUND, request);
         }
     }
