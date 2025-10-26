@@ -20,7 +20,8 @@ import { GiftListGiftsComponent } from './pages/gift-list-gifts/gift-list-gifts.
 import { GiftsComponent } from './pages/gifts/gifts.component';
 import { ProductComponent } from './pages/product/product.component';
 import { ProductsComponent } from './pages/products/products.component';
-
+import { CategoriesComponent } from './pages/categories/categories.component';
+import { CategoryComponent } from './pages/category/category.component';
 
 
 export const routes: Routes = [
@@ -191,6 +192,30 @@ export const routes: Routes = [
             IRoleType.user,
           ],
           name: 'Product Lists',
+          showInSidebar: true
+        }
+      },
+      {
+        path: 'categories',
+        component: CategoriesComponent,
+        data: {
+          authorities: [
+            IRoleType.superAdmin,
+            IRoleType.user,
+          ],
+          name: 'Categories',
+          showInSidebar: true
+        }
+      },
+      {
+        path: 'categoriy-list',
+        component: CategoryComponent,
+        data: {
+          authorities: [
+            IRoleType.superAdmin,
+            IRoleType.user,
+          ],
+          name: 'Categories Lists',
           showInSidebar: true
         }
       }
