@@ -6,7 +6,7 @@ import { IProductList } from '../../../interfaces';
   standalone: true,
   imports: [],
   templateUrl: './product-list.component.html',
-  styleUrl: './giproductft-list.component.scss'
+  styleUrl: './product-list.component.scss'
 })
 export class ProductListComponent {
   @Input() productsList: IProductList[] = [];
