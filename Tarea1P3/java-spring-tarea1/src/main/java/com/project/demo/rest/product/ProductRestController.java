@@ -50,8 +50,8 @@ public class ProductRestController {
     }
 
     @GetMapping("/product-list/{productListId}")
-    @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<?> getGiftsByGiftListId(
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
+    public ResponseEntity<?> getProductsByProductListId(
             @PathVariable Long productListId,
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10") int size,
@@ -71,7 +71,7 @@ public class ProductRestController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
     public ResponseEntity<?> getProductById(@PathVariable Long id, HttpServletRequest request) {
         Optional<Product> foundGift = productRepository.findById(id);
         if(foundGift.isPresent()) {

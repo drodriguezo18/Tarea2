@@ -48,6 +48,7 @@ public class ProductListRestController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
     public ResponseEntity<?> addProductList(@RequestBody ProductList gifList, HttpServletRequest request) {
         ProductList savedOrder = productListRepository.save(gifList);
         return new GlobalResponseHandler().handleResponse("Product list created successfully",
@@ -55,6 +56,7 @@ public class ProductListRestController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
     public ResponseEntity<?> editProductList(@RequestBody ProductList gifList, HttpServletRequest request) {
         ProductList savedOrder = productListRepository.save(gifList);
         return new GlobalResponseHandler().handleResponse("Product list created successfully",
@@ -62,6 +64,7 @@ public class ProductListRestController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
     public ResponseEntity<?> deleteProduct(@PathVariable Long id, HttpServletRequest request) {
         Optional<ProductList> foundItem = productListRepository.findById(id);
         if(foundItem.isPresent()) {
